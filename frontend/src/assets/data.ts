@@ -49,15 +49,15 @@ export const europeanCountries: LocationType[] = [
 
 export const markerLegend: MarkerLegendType[] = [
   {
-    iconUrl: "http://maps.google.com/mapfiles/ms/icons/red-dot.png",
+    iconUrl: "https://maps.google.com/mapfiles/ms/icons/red-dot.png",
     label: "Your Location",
   },
   {
-    iconUrl: "http://maps.google.com/mapfiles/ms/icons/green-dot.png",
+    iconUrl: "https://maps.google.com/mapfiles/ms/icons/green-dot.png",
     label: "Today's accesses",
   },
   {
-    iconUrl: "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png",
+    iconUrl: "https://maps.google.com/mapfiles/ms/icons/yellow-dot.png",
     label: "Other accesses",
   },
 ];
