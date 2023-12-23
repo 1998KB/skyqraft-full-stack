@@ -27,7 +27,6 @@ export const useDataFetching = () => {
         setIsLoading(false);
       }
     };
-
     fetchData();
   }, []);
 

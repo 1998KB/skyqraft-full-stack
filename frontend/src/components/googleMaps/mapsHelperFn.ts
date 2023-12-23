@@ -11,7 +11,7 @@ export const getFilteredLocations = (
   selectedDate: Date,
   allTimes: boolean
 ) => {
-  const baseMapOptions = getCountryMapOptions(
+  const mapOptions = getCountryMapOptions(
     selectedCountry.country === "Europe" ? 4 : 5,
     selectedCountry.coordinates
   );
@@ -20,13 +20,13 @@ export const getFilteredLocations = (
     if (allTimes) {
       return {
         filteredLocations: allLocations,
-        mapOptions: baseMapOptions,
+        mapOptions,
       };
     } else {
       const europeFilteredLocations = filterByDate(allLocations, selectedDate);
       return {
         filteredLocations: europeFilteredLocations,
-        mapOptions: baseMapOptions,
+        mapOptions,
       };
     }
   } else {
@@ -37,7 +37,7 @@ export const getFilteredLocations = (
       );
       return {
         filteredLocations: countryFilteredLocations,
-        mapOptions: baseMapOptions,
+        mapOptions,
       };
     } else {
       const countryFilteredLocations = filterByDate(
@@ -46,7 +46,7 @@ export const getFilteredLocations = (
       );
       return {
         filteredLocations: countryFilteredLocations,
-        mapOptions: baseMapOptions,
+        mapOptions,
       };
     }
   }

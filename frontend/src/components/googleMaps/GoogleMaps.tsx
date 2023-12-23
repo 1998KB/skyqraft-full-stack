@@ -1,5 +1,3 @@
-// GoogleMaps.tsx
-
 import React, { useEffect, useState } from "react";
 import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
 import { LocationType } from "../../assets/dataTypes";
@@ -24,7 +22,7 @@ export const GoogleMaps = ({
   allTimes,
 }: GoogleMapsProps) => {
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: "AIzaSyDfaIxAdtvXVWcoEDoqtOQKPcOu2mXr7Rc",
+    googleMapsApiKey: process.env.REACT_APP_GOOGLEMAPS_API_KEY!,
   });
 
   const { filteredLocations, mapOptions } = getFilteredLocations(
