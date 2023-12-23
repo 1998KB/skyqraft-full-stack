@@ -1,4 +1,5 @@
 import { LocationType } from "../../assets/dataTypes";
+import { filterByDate, filterByLocation } from "../helper/helperFn";
 
 export const getFormattedDate = (timestamp: any) => {
   const date = new Date(timestamp.seconds * 1000 + timestamp.nanoseconds / 1e6);
@@ -83,13 +84,3 @@ const getCountryMapOptions = (
   zoom,
   center,
 });
-
-const filterByLocation = (locations: LocationType[], country: string) =>
-  locations.filter((location) => location.country === country);
-
-const filterByDate = (locations: LocationType[], selectedDate: Date) =>
-  locations.filter(
-    (location) =>
-      getFormattedDate(location.timestamp).toDateString() ===
-      selectedDate.toDateString()
-  );

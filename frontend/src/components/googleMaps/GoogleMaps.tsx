@@ -1,26 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
-import { LocationType } from "../../assets/dataTypes";
 import { getFilteredLocations, isToday } from "./mapsHelperFn";
+import { useAppContext } from "../../context/AppContext";
 
-interface GoogleMapsProps {
-  setTotalAccess: (total: number) => void;
-  selectedCountry: LocationType;
-  allLocations: LocationType[];
-  latLng: { lat: number; lng: number };
-  selectedDate: Date;
-  allTimes: boolean;
-  setAllTimes: (bol: boolean) => void;
-}
+export const GoogleMaps = () => {
+  const {
+    selectedDate,
+    allTimes,
+    setTotalAccess,
+    selectedCountry,
+    allLocations,
+    latLngCurrentLocation,
+  } = useAppContext();
 
-export const GoogleMaps = ({
-  setTotalAccess,
-  selectedCountry,
-  allLocations,
-  latLng,
-  selectedDate,
-  allTimes,
-}: GoogleMapsProps) => {
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLEMAPS_API_KEY!,
   });
@@ -35,25 +27,25 @@ export const GoogleMaps = ({
   useEffect(() => {
     setTotalAccess(filteredLocations!.length);
   }, [
-    filteredLocations,
-    setTotalAccess,
     selectedDate,
     allTimes,
     selectedCountry,
+    filteredLocations,
+    setTotalAccess,
   ]);
 
   return (
     <>
       {isLoaded && (
         <GoogleMap options={mapOptions} mapContainerClassName="map-container">
-          <Marker position={latLng} zIndex={50} />
+          <Marker position={latLngCurrentLocation} zIndex={50} />
           {filteredLocations!.length > 0 &&
             filteredLocations!.map((location, index) => (
               <Marker
                 icon={{
                   url: isToday(location.timestamp)
-                    ? "http://maps.google.com/mapfiles/ms/icons/green-dot.png"
-                    : "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png",
+                    ? "https://maps.google.com/mapfiles/ms/icons/green-dot.png"
+                    : "https://maps.google.com/mapfiles/ms/icons/yellow-dot.png",
                   scaledSize: new window.google.maps.Size(20, 20),
                 }}
                 key={index}

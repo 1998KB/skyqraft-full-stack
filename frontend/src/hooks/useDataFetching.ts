@@ -1,15 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { postLocation, getAllLocations } from "../client/client";
 import { LocationType } from "../assets/dataTypes";
+import { useAppContext } from "../context/AppContext";
 
 export const useDataFetching = () => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [latLngCurrentLocation, setLatLngCurrentLocation] = useState({
-    lat: 0,
-    lng: 0,
-  });
-  const [allLocations, setAllLocations] = useState<LocationType[]>([]);
-
+  const { setIsLoading, setAllLocations, setLatLngCurrentLocation } =
+    useAppContext();
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -29,6 +25,4 @@ export const useDataFetching = () => {
     };
     fetchData();
   }, []);
-
-  return { isLoading, latLngCurrentLocation, allLocations };
 };

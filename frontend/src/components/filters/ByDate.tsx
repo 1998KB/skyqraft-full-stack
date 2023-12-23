@@ -1,20 +1,12 @@
 import React from "react";
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { useAppContext } from "../../context/AppContext";
 
-interface ByDateProps {
-  selectedDate: Date;
-  setSelectedDate: (selectedDate: Date) => void;
-  setAllTimes: (allTimes: boolean) => void;
-  allTimes: boolean;
-}
+export const ByDate = () => {
+  const { selectedDate, setSelectedDate, setAllTimes, allTimes } =
+    useAppContext();
 
-export const ByDate = ({
-  selectedDate,
-  setSelectedDate,
-  setAllTimes,
-  allTimes,
-}: ByDateProps) => {
   const handleDateChange = (date: Date) => {
     setSelectedDate(date);
   };

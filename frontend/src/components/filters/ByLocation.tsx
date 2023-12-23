@@ -1,15 +1,9 @@
 import React from "react";
 import { europeanCountries } from "../../assets/data";
-import { LocationType } from "../../assets/dataTypes";
-interface ByLocationProps {
-  selectedCountry: LocationType;
-  setSelectedCountry: (country: LocationType) => void;
-}
+import { useAppContext } from "../../context/AppContext";
 
-export const ByLocation = ({
-  setSelectedCountry,
-  selectedCountry,
-}: ByLocationProps) => {
+export const ByLocation = () => {
+  const { setSelectedCountry, selectedCountry } = useAppContext();
   const handleCountryChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedCountryName = event.target.value;
     const selectedCountryObject = europeanCountries.find(
