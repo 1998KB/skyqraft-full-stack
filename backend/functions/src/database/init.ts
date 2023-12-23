@@ -2,7 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBV2gMas6QcekHx6vZYO7_1mM3twUPA1Lc",
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: "skyqraft-61cdf.firebaseapp.com",
   projectId: "skyqraft-61cdf",
   storageBucket: "skyqraft-61cdf.appspot.com",

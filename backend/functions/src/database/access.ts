@@ -18,7 +18,7 @@ export const postLocation = async (coordinates: {
     const id = randomUUID();
     logger.info("postLocation: " + id);
     const geocodingResponse = await axios.get(
-      `https://api.opencagedata.com/geocode/v1/json?q=${coordinates.lat}+${coordinates.lng}&key=2c023f54244441ccbfce59f2926419bc`
+      `https://api.opencagedata.com/geocode/v1/json?q=${coordinates.lat}+${coordinates.lng}&key=${process.env.REACT_APP_OPENCAGE_API_KEYKey}`
     );
     const country =
       geocodingResponse.data.results[0]?.components.country || "Unknown";
