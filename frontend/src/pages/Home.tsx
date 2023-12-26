@@ -8,6 +8,7 @@ import { MarkerLegend } from "../components/MarkerLegenda";
 import TotalAccessDisplay from "../components/TotalAccessDisplay";
 import { useAppContext } from "../context/AppContext";
 import { Chart } from "../components/Chart";
+import { useEffect } from "react";
 
 export const Home = () => {
   useDataFetching();
@@ -23,14 +24,14 @@ export const Home = () => {
         <ByDate />
       </div>
       <div className="w-full flex flex-col justify-center items-center gap-6 mt-28">
-        <TotalAccessDisplay isLoading={isLoading} />
+        <TotalAccessDisplay />
         <div
           className="w-2/3 flex justify-center items-center"
           style={{ height: "35em" }}
         >
           {isLoading ? <LoadingSpinner size="big" /> : <GoogleMaps />}
         </div>
-        <MarkerLegend markerLegend={markerLegend} />
+        <MarkerLegend />
         <Chart />
       </div>
     </div>

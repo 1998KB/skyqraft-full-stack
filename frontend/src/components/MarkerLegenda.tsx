@@ -1,11 +1,7 @@
 import React from "react";
-import { MarkerLegendType } from "../assets/dataTypes";
+import { markerLegend } from "../assets/data";
 
-interface MarkerLegendProps {
-  markerLegend: MarkerLegendType[];
-}
-
-export const MarkerLegend = ({ markerLegend }: MarkerLegendProps) => {
+export const MarkerLegend = () => {
   return (
     <div className="flex flex-col items-center gap-2 bg-gray-300 w-2/5  p-4 rounded-md shadow-md">
       <div className="grid grid-cols-3 gap-4">

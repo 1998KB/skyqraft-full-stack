@@ -1,12 +1,8 @@
 import { LoadingSpinner } from "./LoaderSpinner";
 import { useAppContext } from "../context/AppContext";
 
-interface TotalAccessDisplayProps {
-  isLoading: boolean;
-}
-
-const TotalAccessDisplay = ({ isLoading }: TotalAccessDisplayProps) => {
-  const { selectedCountry, totalAccess, selectedDate, allTimes } =
+const TotalAccessDisplay = () => {
+  const { selectedCountry, totalAccess, selectedDate, allTimes, isLoading } =
     useAppContext();
 
   return (
