@@ -24,5 +24,6 @@ export const useDataFetching = () => {
       }
     };
     fetchData();
+    // eslint-disable-next-line
   }, []);
 };

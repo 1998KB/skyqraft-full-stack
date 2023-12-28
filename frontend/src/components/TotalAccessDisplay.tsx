@@ -1,4 +1,3 @@
-import { LocationType } from "../assets/dataTypes";
 import { TotalAccessDisplayProps } from "../assets/props";
 import { LoadingSpinner } from "./LoaderSpinner";
 import React from "react";
