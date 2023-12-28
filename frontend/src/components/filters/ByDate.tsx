@@ -1,15 +1,14 @@
 import React from "react";
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { useAppContext } from "../../context/AppContext";
+import { ByDateProps } from "../../assets/props";
 
-export const ByDate = () => {
-  const { selectedDate, setSelectedDate, setAllTimes, allTimes } =
-    useAppContext();
-
-  const handleDateChange = (date: Date) => {
-    setSelectedDate(date);
-  };
+export const ByDate = ({
+  selectedDate,
+  setSelectedDate,
+  setAllTimes,
+  allTimes,
+}: ByDateProps) => {
   return (
     <div className="flex items-center justify-between gap-4">
       <label htmlFor="date" className="text-lg font-semibold">
@@ -17,7 +16,7 @@ export const ByDate = () => {
       </label>
       <ReactDatePicker
         selected={selectedDate}
-        onChange={handleDateChange}
+        onChange={(date: Date) => setSelectedDate(date)}
         dateFormat="yyyy-MM-dd"
         className="border-2 border-gray-300 rounded-md p-2 ml-2 w-36 text-black"
         maxDate={new Date()}

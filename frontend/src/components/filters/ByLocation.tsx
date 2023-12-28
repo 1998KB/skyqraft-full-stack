@@ -1,19 +1,21 @@
 import React from "react";
 import { europeanCountries } from "../../assets/data";
-import { useAppContext } from "../../context/AppContext";
+import { ByLocationProps } from "../../assets/props";
 
-export const ByLocation = () => {
-  const { setSelectedCountry, selectedCountry } = useAppContext();
+export const ByLocation = ({
+  setSelectedCountry,
+  selectedCountry,
+}: ByLocationProps) => {
   const handleCountryChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedCountryName = event.target.value;
     const selectedCountryObject = europeanCountries.find(
       (country) => country.country === selectedCountryName
     );
-
     if (selectedCountryObject) {
       setSelectedCountry(selectedCountryObject);
     }
   };
+
   return (
     <div className="flex items-center justify-between gap-4">
       <label htmlFor="country" className="text-lg font-semibold">

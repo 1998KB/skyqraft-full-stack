@@ -7,17 +7,44 @@ import {
   Legend,
   LinearScale,
 } from "chart.js";
-import { useAppContext } from "../context/AppContext";
 import { europeanCountries } from "../assets/data";
 import { LocationType } from "../assets/dataTypes";
 import { useEffect, useState } from "react";
-import { filterByDate, filterByLocation } from "./helper/helperFn";
+import { filterByDate, filterByLocation } from "./utils/helperFn";
+import { ChartProps } from "../assets/props";
 
 ChartJS.register(BarElement, CategoryScale, Tooltip, Legend, LinearScale);
 
-export const Chart = () => {
-  const { allLocations, selectedDate, allTimes, selectedCountry } =
-    useAppContext();
+const chartOptions = {
+  scales: {
+    x: {
+      grid: {
+        color: "grey",
+      },
+      ticks: {
+        color: "white",
+      },
+    },
+    y: {
+      ticks: {
+        color: "white",
+      },
+    },
+  },
+  plugins: {
+    legend: {
+      labels: {
+        color: "white",
+      },
+    },
+  },
+};
+export const Chart = ({
+  allLocations,
+  selectedDate,
+  allTimes,
+  selectedCountry,
+}: ChartProps) => {
   const [filteredData, setFilteredData] = useState<LocationType[]>([]);
 
   useEffect(() => {
@@ -53,31 +80,6 @@ export const Chart = () => {
         data: dataValues,
       },
     ],
-  };
-
-  const chartOptions = {
-    scales: {
-      x: {
-        grid: {
-          color: "grey",
-        },
-        ticks: {
-          color: "white",
-        },
-      },
-      y: {
-        ticks: {
-          color: "white",
-        },
-      },
-    },
-    plugins: {
-      legend: {
-        labels: {
-          color: "white",
-        },
-      },
-    },
   };
 
   return (

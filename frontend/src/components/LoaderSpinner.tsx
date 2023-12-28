@@ -1,8 +1,5 @@
 import React from "react";
-
-interface LoadingSpinnerProps {
-  size: "small" | "big";
-}
+import { LoadingSpinnerProps } from "../assets/props";
 
 export const LoadingSpinner = ({ size }: LoadingSpinnerProps) => (
   <div

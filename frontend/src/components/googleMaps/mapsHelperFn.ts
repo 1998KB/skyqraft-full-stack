@@ -1,5 +1,5 @@
 import { LocationType } from "../../assets/dataTypes";
-import { filterByDate, filterByLocation } from "../helper/helperFn";
+import { filterByDate, filterByLocation } from "../utils/helperFn";
 
 export const getFormattedDate = (timestamp: any) => {
   const date = new Date(timestamp.seconds * 1000 + timestamp.nanoseconds / 1e6);

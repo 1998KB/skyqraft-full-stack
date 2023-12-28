@@ -1,10 +1,15 @@
+import { LocationType } from "../assets/dataTypes";
+import { TotalAccessDisplayProps } from "../assets/props";
 import { LoadingSpinner } from "./LoaderSpinner";
-import { useAppContext } from "../context/AppContext";
+import React from "react";
 
-const TotalAccessDisplay = () => {
-  const { selectedCountry, totalAccess, selectedDate, allTimes, isLoading } =
-    useAppContext();
-
+export const TotalAccessDisplay = ({
+  selectedCountry,
+  totalAccess,
+  selectedDate,
+  allTimes,
+  isLoading,
+}: TotalAccessDisplayProps) => {
   return (
     <div className="flex flex-col gap-6 bg-gray-800 w-2/5 text-white p-4 rounded-md shadow-md">
       <div className="flex justify-between items-center gap-4">
@@ -22,11 +27,9 @@ const TotalAccessDisplay = () => {
         {isLoading ? (
           <LoadingSpinner size="small" />
         ) : (
-          <p className="text-3xl font-bold">{totalAccess} visits</p>
+          <p className="text-3xl font-bold">{totalAccess!} visits</p>
         )}
       </div>
     </div>
   );
 };
-
-export default TotalAccessDisplay;
